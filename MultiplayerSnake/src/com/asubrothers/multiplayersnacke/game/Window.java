@@ -1,5 +1,8 @@
 package com.asubrothers.multiplayersnacke.game;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -29,7 +32,7 @@ public class Window extends JFrame implements Runnable{
 		game = new Game();
 		game.setSize(this.getWidth(),this.getHeight());
 		panel = menu;
-		this.add(panel);
+		this.add(menu);
 		this.add(game);
 		game.setVisible(false);
 		new Thread(this).start();
@@ -38,8 +41,10 @@ public class Window extends JFrame implements Runnable{
 		if(ChangeMode) {
 			if(GameMode == "game") {
 				menu.setVisible(false);
-				panel=game;
+				
+				
 				game.setVisible(true);
+				game.requestFocus();
 			}
 			ChangeMode=false;
 		}
@@ -62,5 +67,6 @@ public class Window extends JFrame implements Runnable{
 			}
 		}
 	}
+
 
 }
