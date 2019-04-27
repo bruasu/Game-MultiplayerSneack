@@ -1,0 +1,7 @@
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+.tmp/
+node_modules/
