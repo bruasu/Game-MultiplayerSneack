@@ -29,28 +29,33 @@ public class Window extends JFrame implements Runnable{
 		panel.setSize(this.getWidth(),this.getHeight());
 		menu = new Menu();
 		menu.setSize(this.getWidth(),this.getHeight());
-		game = new Game();
-		game.setSize(this.getWidth(),this.getHeight());
+		
 		panel = menu;
 		this.add(menu);
-		this.add(game);
-		game.setVisible(false);
+		repaint();
 		new Thread(this).start();
 	}
 	public void update() {
 		if(ChangeMode) {
 			if(GameMode == "game") {
 				menu.setVisible(false);
-				
-				
+				game = new Game();
+				game.setSize(this.getWidth(),this.getHeight());
+				this.add(game);
 				game.setVisible(true);
 				game.requestFocus();
 			}
 			ChangeMode=false;
 		}
+		if(GameMode == "game") {
+			((Game) game).update();
+		}
 	}
 	public void render() {
+		if(GameMode == "game") {
 		
+			((Game) game).render();
+		}
 	}
 	public static void main(String[] args) {
 		new Window();
